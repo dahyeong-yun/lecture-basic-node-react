@@ -3,4 +3,5 @@ package-lock.json
 node_modules/
 
 # database
-database.js
+config/dev.js
+config/prod.js
