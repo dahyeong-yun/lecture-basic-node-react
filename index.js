@@ -1,9 +1,10 @@
+const mongodb = require('./database.js')
 const express = require('express')
 const app = express()
 const port = 4000
 
 const mongoose = require('mongoose')
-mongoose.connect('mongoDBUrl', {
+mongoose.connect(mongodb.url, {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err))
