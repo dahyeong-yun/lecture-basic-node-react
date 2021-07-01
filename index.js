@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const app = express()
 const port = 4000
 const { User } = require('./models/User')
+const { auth } = require('./middleware/auth')
 
 app.use(express.urlencoded({extended: true})) // application/x-www-form-urlencoded
 app.use(express.json()); // application/json
@@ -54,7 +55,7 @@ app.post('/login', (req, res) => {
       // 인증 완료시 토큰 생성
       user.generateToken((err, user) => {
         if(err) return res.status(400).send(err)
-        res.cookie("x-auth", user.token)
+        res.cookie("x_auth", user.token)
         .status(200)
         .json({
           loginSuccess: true,
@@ -62,6 +63,21 @@ app.post('/login', (req, res) => {
         })
       })
     })
+  })
+})
+
+
+app.get('/api/users/auth', auth, (req, res) => {
+  // auth 미들웨어가 인증 역할을 함
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email
+    //name
+    //lastname
+    //role
+    //image
   })
 })
 
