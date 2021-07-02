@@ -3,7 +3,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 
 const app = express()
-const port = 3001
+const port = 3022
 const { User } = require('./models/User')
 const { auth } = require('./middleware/auth')
 
@@ -35,7 +35,7 @@ app.post('/register', (req, res) => {
   })
 })
 
-app.post('/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
   // 요청 계정 정보 찾기
   User.findOne({email: req.body.email}, (err, user) => {
     if(!user) {
