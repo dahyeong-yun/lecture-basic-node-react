@@ -22,7 +22,7 @@ mongoose.connect(config.mongoURI, {
  */
 app.get('/', (req, res) => res.send('change test'))
 
-app.post('/register', (req, res) => {
+app.post('/api/users/register', (req, res) => {
   // 회원 가입 정보 추출
   const user = new User(req.body)
 
