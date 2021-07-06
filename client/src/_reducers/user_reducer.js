@@ -7,10 +7,8 @@ export default function(state = {}, action) { // TODO payload라는 단어의 �
     switch (action.type) {
         case LOGIN_USER:
             return {...state, loginSuccess: action.payload}
-            break
         case REGISTER_USER:
             return { ...state, register: action.payload}
-            break
         default:
             return state
     }
