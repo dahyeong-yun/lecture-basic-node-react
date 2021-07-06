@@ -6,20 +6,19 @@ import {
   Link
 } from "react-router-dom";
 
-import NavBar from './component/views/NavBar/NavBar'
 import LandingPage from './component/views/LandingPage/LandingPage'
 import LoginPage from './component/views/LoginPage/LoginPage'
 import RegisterPage from './component/views/RegisterPage/RegisterPage'
-import Footer from './component/views/Footer/Footer'
+import Auth from './hoc/auth'
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/" component={Auth(LandingPage, null)} />
+          <Route exact path="/login" component={Auth(LoginPage, false) } />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
         </Switch>
       </div>
     </Router>

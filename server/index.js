@@ -74,10 +74,10 @@ app.get('/api/users/auth', auth, (req, res) => {
     isAdmin: req.user.role === 0 ? false : true,
     isAuth: true,
     email: req.user.email
-    //name
-    //lastname
-    //role
-    //image
+    //name: req.user.name
+    //lastname: req.user.lastname
+    //role:
+    //image:
   })
 })
 
